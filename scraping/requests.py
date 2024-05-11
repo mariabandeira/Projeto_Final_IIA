@@ -7,6 +7,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
 
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from modules.create_df import create_df
 from modules.create_df import pre_treat
 import time
@@ -167,8 +171,8 @@ def export_reviews(id_list):
         df_positive = create_df(positive_treated, product_id)
         df_negative = create_df(negative_treated, product_id)
 
-        df_positive.to_csv(f'datasets/POSITIVE_{product_id}.csv', index=False, sep=';')
-        df_negative.to_csv(f'datasets/NEGATIVE_{product_id}.csv', index=False, sep=';')
+        df_positive.to_csv(f'../datasets/POSITIVE_{product_id}.csv', index=False, sep=';')
+        df_negative.to_csv(f'../datasets/NEGATIVE_{product_id}.csv', index=False, sep=';')
     del navegador
     
     return True
